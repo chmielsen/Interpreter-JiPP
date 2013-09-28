@@ -1,0 +1,22 @@
+Wojciech Chmiel 305187 JiPP Interpreter
+
+1. Opis jezyka
+
+Zaimplementowalem jezyk imperatywny o skladni podobnej do C, z
+dynamicznie nadawanymi wartosciami, ale ze sprawdzaniem typow. 
+Nie ma podzialu na zmienne lokalne i globalne, wszystko jest w 
+przestrzeni globalnej.
+Z wymagan na 12p brakuje mi rekurencji.
+Z wymagan na 16p realizuje  operatory +=, ++, oraz jest rekurenycjny
+typ danych - listy. Dodane sa podstawowe operacje na listach.
+
+Interpreter interpretuje instrukcje po kolei - czeka az tekst wprowadzany od ostatniej istrukcji bedzie
+prawidlowa instrukcja jezyka.
+
+W rozwiazaniu korzystalem z BNFC, pliki poza Main.hs i Interpreter.hs sa
+wygnereowane z pliku wc_gram.cf
+
+Sa 2 typy zmiennych: Int i List<Typ>.
+
+Po zadeklarowaniu zmienne typu Int maja wartosc 0, a listy pusta liste.
+

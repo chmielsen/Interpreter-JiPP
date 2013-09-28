@@ -1,0 +1,98 @@
+-- Wojciech Chmiel - gramatyka do interpretera
+
+Program.    Prog ::= [Instruction];
+
+-- Istrukcja jest albo deklaracja albo wyrazeniem
+[].       [Instruction]    ::= ;
+(:).      [Instruction]    ::= Instruction ";" [Instruction] ;
+
+DStmt. Instruction ::= Stmt;
+DDecl. Instruction ::= Decl;
+
+[].       [Decl]    ::= ;
+(:).      [Decl]    ::= Decl ";" [Decl] ;
+
+[].       [Stmt]    ::= ;
+(:).      [Stmt]    ::= Stmt ";" [Stmt] ;
+
+-- Wyrazenai
+Assignment. Stmt ::= Ident "=" Exp ;
+FreeExp.    Stmt ::= Exp;
+VPrint.     Stmt ::= "print" "(" Ident ")";
+IfSe.	    Stmt ::= "if" Exp "then" Stmt "else" Stmt ;
+BlockS.     Stmt ::= "{" [Instruction] "}" ;
+WhileS.     Stmt ::= "while" "(" Exp ")" Stmt ;
+FirstS.     Stmt ::= "first(" Stmt ")" ;
+TailS.      Stmt ::= "tail(" Stmt ")" ;
+SizeS.      Stmt ::= "size(" Stmt ")" ;
+PopBackS.       Stmt ::= "pop_back" "(" Ident ")" ;
+PopFrontS.      Stmt ::= "pop_front" "(" Ident ")" ;
+PushBackS.      Stmt ::= "push_back" "(" Ident "," Exp ")" ;
+PushFrontS.     Stmt ::= "push_front" "(" Ident "," Exp ")" ;
+RetS.	    Stmt ::= "return" Exp ;
+EEAdd.	    Stmt ::= Ident "+=" Exp;
+EESub.      Stmt ::= Ident "-=" Exp;
+EEMul.	    Stmt ::= Ident "*=" Exp;
+EEDiv.	    Stmt ::= Ident "/=" Exp;
+
+-- Typy deklaracji
+NVariable.      Decl     ::= Type Ident ;
+NFunctionV.     Decl	 ::= "fun" "void" Ident "(" [Arg] ")" "{" [Instruction] "}";
+NFunction.      Decl	 ::= "fun" Type Ident "(" [Arg] ")" "{" [Instruction] "}";
+
+-- Typy
+TInt. Type ::= "int" ;
+TList. Type ::= "list" "<" Type ">";
+
+Param. Arg ::= Type Ident;
+
+[].       [Arg]    ::= ;
+(:[]).    [Arg]	   ::= Arg ;
+(:).      [Arg]    ::= Arg "," [Arg] ;
+
+[].       [Exp]    ::= ;
+(:[]).    [Exp]    ::= Exp;
+(:).      [Exp]    ::= Exp "," [Exp] ;
+
+
+
+
+-- wyrazenia
+
+EOpA.     Exp      ::= Exp0 Op  Exp0 ;
+EOpB.     Exp0     ::= Exp1 Op0 Exp1 ;
+EOpC.     Exp1     ::= Exp1 Op1 Exp2 ;
+EOpD.     Exp2     ::= Exp2 Op2 Exp3 ;
+EOpE.     Exp      ::= Exp1 Op  Exp1 ;
+
+EVar.     Exp3     ::= Ident ;
+EInt.     Exp3     ::= Integer ;
+FunCall.  Exp3	   ::= Ident "(" [Exp] ")";
+EInc.     Exp3     ::= Ident "++";
+EDecr.    Exp3     ::= Ident "--";
+ESub.	  Exp3	   ::= "-" Exp;
+
+
+
+_.          Exp      ::= Exp0 ;
+_.          Exp0     ::= Exp1 ;
+_.          Exp1     ::= Exp2 ;
+_.          Exp2     ::= Exp3 ;
+_.          Exp3     ::= "(" Exp ")" ;
+
+OAdd.       Op1      ::= "+" ;
+OMult.      Op2      ::= "*" ;
+ODiv.       Op2      ::= "/" ;
+OSub.       Op1      ::= "-" ;
+OLt.        Op0      ::= "<" ;
+OGt.        Op0      ::= ">" ;
+OEq.        Op0      ::= "==" ;
+OAnd.       Op       ::= "&&" ;
+OOr.        Op       ::= "||" ;
+
+
+comment "//" ;
+comment "#" ;
+comment "/*" "*/" ;
+
+

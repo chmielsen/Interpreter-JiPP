@@ -1,0 +1,9 @@
+int a;
+fun int f() {
+    fun int g() {
+        return 20;
+    };
+    return g();
+};
+a = f();
+print (a);

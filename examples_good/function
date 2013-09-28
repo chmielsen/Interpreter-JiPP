@@ -1,0 +1,6 @@
+int a;
+fun int f() {
+    return 10;
+};
+a = f();
+print(a);

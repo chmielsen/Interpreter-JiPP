@@ -1,0 +1,13 @@
+list<int> l;
+list< list<int>> ll;
+int x;
+x = 1;
+while (x < 5) {
+    push_back(l, x);
+    print(l);
+    push_back(ll, l);
+    print(ll);
+    x += 1;
+};
+print(l);
+print(ll);

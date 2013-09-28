@@ -1,0 +1,10 @@
+int x;
+x = 2;
+list<int> l;
+while (x < 5) {
+    push_back(l, x);
+    push_front(l,x);
+    x += 1;
+};
+print(x);
+print(l);

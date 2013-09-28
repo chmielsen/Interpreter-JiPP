@@ -1,0 +1,12 @@
+int a;
+a = 20;
+fun int f(int a) {
+    if a < 5 then {
+        return a;
+    } else {
+        a -= 1; 
+        return f();
+    }
+};
+a = f();
+print(a);

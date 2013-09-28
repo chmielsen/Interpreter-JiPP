@@ -1,0 +1,5 @@
+list<int> x;
+fun int f() {
+    return 10;
+};
+x = f();

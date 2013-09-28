@@ -1,0 +1,16 @@
+int x;
+int y;
+list<int> l;
+x = 2;
+fun int f (int b, int c) {
+    x = 5;
+    push_back(l, x);
+    push_back(l, 1);
+    push_back(l, 2);
+    push_back(l, 5);
+    return 10;
+};
+y = f(b,c);
+print(x);
+print(y);
+print(l);

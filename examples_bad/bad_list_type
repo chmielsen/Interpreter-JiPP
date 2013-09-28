@@ -1,0 +1,10 @@
+int x;
+x = 0;
+list<int> l;
+while (x < 10) {
+    push_back(l, x);
+    x += 1;
+};
+list<int> l2;
+print(l);
+push_back(l, l2);
